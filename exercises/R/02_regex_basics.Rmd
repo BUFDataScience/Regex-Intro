@@ -1,0 +1,207 @@
+---
+title: "Regex Basics Answer Key"
+output: html_notebook
+---
+
+
+# Import Dependencies
+
+
+```{r}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(stringi, qdapRegex)
+```
+
+# Stringi String Documentation
+
+
+```{r}
+browseURL('http://www.gagolewski.com/software/stringi/manual/')
+```
+
+
+# A Regex Cheat Sheet
+
+
+```
+NAME                REGEX    WHAT IT DOES                                       
+Exception           [^X]     Match everything except `X`                        
+Dot                 .        Match any character                                
+Case Insensitive    (?i)     Matches irregardless of case; `Foo` & `foO` matched
+Digit               \\d      Match digits (i.e., [0-9])                         
+Non-Digit           \\D      Match non-digits (i.e., [^0-9])                    
+Word                \\w      Match words (i.e., [_a-zA-Z0-9])                   
+Non-Word            \\W      Match non-words (i.e., [^_a-zA-Z0-9])              
+Whitespace          \\s      Match whitespace (i.e., [ \\t\\r\\n\\f])           
+Non-Whitespace      \\S      Match non-whitespace (i.e., [^ \\t\\r\\n\\f])      
+Word Boundary       \\b      Match beginning/end of word                        
+Non-Word Boundary   \\B      Match not beginning/end of word                    
+0-1 (Greedy)        x?       Match 0-1 times greedy                             
+0-1 (Lazy)          x??      Match 0-1 times lazy                               
+>= 0 (Greedy)       x*       Match 0 or more times greedy                       
+>= 0 (Lazy)         x*?      Match 0 or more times lazy                         
+>= 1 (Greedy)       x+       Match 1 or more times greedy                       
+>= 1 (Lazy)         x+?      Match 1 or more times lazy                         
+Exactly N           x{4}     Match N times                                      
+Min-Max             x{4,8}   Match min-max times                                
+> N                 x{9,}    Match N or more times          
+```
+
+# Exercises
+
+## String Data
+
+```{r}
+random <- c(
+    "A download file from the http://example.com", 
+    "Another url ftp://www.example.com",
+    "And https://www.example.net",
+    "@hadley (Dr. Wickham) I like #rstats for #ggplot2 work.",
+    "Difference between #magrittr and #pipeR, both implement pipeline operators for #rstats: 
+	http://renkun.me/r/2014/07/26/difference-between-magrittr-and-pipeR.html @timelyportfolio",
+    "Is -2 an integer?", "-4.3 and 3.33 are not.",
+    "123,456 is 0 alot -123456 more than -.2", "and 3456789123 fg for 345.",
+    "There is $5.50 for me.", "that's 45.6% of the pizza", 
+    "14% is $26 or $25.99",
+    "Mr. Bean bought 2 tickets 2-613-213-4567",
+    "43 Butter Rd, Brossard QC K0A 3P0 - 613 213 4567", 
+    "The Rat Race, XX, 12345",
+    "Ignore phone numbers(613)2134567",
+    "Grab zips with dashes 12345-6789 or no space before12345-6789",  
+    "Grab zips with spaces 12345 6789 or no space before12345 6789",
+    "I like 1234567 dogs",
+    " There is ( $5.50 ) for , me and you (NAME HERE). ", " that's [ 45.6% ] of! the pizza !", 
+    "     14% is { $26  } or $25.99 ?", "Oh ;  here's colon : Yippee !",
+    "I love chicken [unintelligible]!",
+    "Me too Miss Jane! (laughter) It's so good.[interrupting]",
+    "Yep it's awesome {reading}.", "Agreed Ms. Jones. {is so much fun}",
+    "R uses 1:5 for 1, 2, 3, 4, 5.", 
+    "At 3:00 we'll meet up , and we leave by 4:30:20",
+    "We'll meet at 6:33 , bring $20,000.", "He ran it in :22.34"
+)
+random
+```
+
+
+
+## Use `'random'` to make a 1 column dataframe with the column named random.
+
+```{r}
+
+```
+
+
+## Extract all Twitter hash tags (#tag).
+
+```{r}
+
+```
+
+
+## Extract all Twitter user names (@name).
+
+```{r}
+
+```
+
+
+## Extract dollar amounts including dollars and decimals.
+
+```{r}
+
+```
+
+
+## Count the number of articles (the, a, an) in each string.  Remember to ignore case.  Don't count words that contain the articles (e.g., `"they"` contains the sub-string 'the'; don't count it).
+
+```{r}
+
+```
+
+
+## Extract 5 or 9 (must contain a dash) digit zip codes.
+
+```{r}
+
+```
+
+
+## Extract a name title (Mr., Ms., Mz., Miss, Dr., etc.) followed by a capitalized name (presumably last name).
+
+```{r}
+
+```
+
+
+## Replace double spaces with single spaces.
+
+```{r}
+
+```
+
+
+## Extract final punctuation mark. 
+
+```{r}
+
+```
+
+
+## Which strings have a comma preceded by a space?  Remove space before commas.
+
+```{r}
+
+```
+
+
+## Extract words starting with capital letters.
+
+```{r}
+
+```
+
+
+## Replace all parenthesis and the text in between with `'-PLACEHOLDER-'`.
+
+```{r}
+
+```
+
+
+## Remove all non-vowel characters ignoring cases.
+
+```{r}
+
+```
+
+
+## Remove all URLs.
+
+```{r}
+
+```
+
+
+## Tokenizing: 
+
+1. Remove all characters except letters, apostrophes, & spaces.    
+2. Remove leading and trailing spaces.    
+3. Split each string into a vector of words (split on one or more spaces).   
+
+
+```{r}
+
+```
+
+
+## Extract all numbers (including decimal points and negative signs).
+
+***Note*** *that a number followed by a comma  (e.g., `"33,"` in `"We'll meet at 6:33, bring $20,000."`) might get captured.  We'll learn advanced techniques to handle this in a more advanced session.*
+
+```{r}
+
+```
+
+
+
+

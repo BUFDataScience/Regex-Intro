@@ -1,0 +1,386 @@
+---
+title: "Regex Actions Answer Key"
+output: html_notebook
+---
+
+
+# Import Dependencies
+
+
+```{r}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(stringi)
+```
+
+# Stringi String Documentation
+
+
+```{r}
+browseURL('http://www.gagolewski.com/software/stringi/manual/')
+```
+
+
+# A String & Regex Pattern to Match
+
+
+```{r}
+string <- c('fg44h4j', 'rghi', 'tr44e', 'IG4u')
+pattern <- '4'
+pattern2 <- 'i'
+pattern3 <- 'g'
+```
+
+# Convert to Dataframe
+
+
+```{r}
+z <- data.frame(text = string, stringsAsFactors = FALSE)
+z
+```
+
+
+# 4 Basic Regex Actions
+
+1. Matching (logical/counting)
+2. Subbing
+3. Splitting
+4. Extracting
+
+
+## Matching: Logical
+
+
+```{r}
+stri_detect_regex(z$text, '4')
+```
+
+
+```{r}
+stri_detect_regex(z$text, 'i')
+```
+
+
+### Ignore Case
+
+
+```{r}
+stri_detect_regex(z$text, '(?i)i')
+```
+
+
+## Matching: Counting
+
+
+```{r}
+stri_count_regex(z$text, '4')
+```
+
+
+```{r}
+stri_count_regex(z$text, 'i')
+```
+
+
+
+### Ignore Case
+
+
+```{r}
+stri_count_regex(z$text, '(?i)i')
+```
+
+
+# Subbing
+
+
+```{r}
+stri_replace_all_regex(z$text, '4', '<<FOUR>>')
+```
+
+
+
+
+
+```{r}
+stri_replace_all_regex(z$text, 'i', '<<AYE>>')
+```
+
+
+
+
+### Ignore Case
+
+
+```{r}
+stri_replace_all_regex(z$text, '(?i)i', '<<AYE>>')
+```
+
+
+
+
+# Splitting
+
+
+```{r}
+stri_split_regex(z$text, '4')
+```
+
+
+
+```{r}
+stri_split_regex(z$text, 'g')
+```
+
+
+
+
+### Ignore Case
+
+
+```{r}
+stri_split_regex(z$text, '(?i)g')
+```
+
+
+
+
+### Splitting to Array
+
+
+```{r}
+y <- stri_split_regex(z$text, '(?i)g')
+t(stri_list2matrix(y))
+```
+
+
+
+
+# Extracting
+
+
+```{r}
+stri_extract_all_regex(z$text, '(4)')
+```
+
+
+### Going Tall
+
+```{r}
+ex <- stri_extract_all_regex(z$text, '(4)')
+data.frame(
+	ind = rep(seq_along(ex), sapply(ex, length)),
+	value = unlist(ex), 
+	stringsAsFactors = FALSE
+)
+```
+
+
+
+
+### Going Wide
+
+
+```{r}
+t(stri_list2matrix(ex))
+```
+
+
+
+
+
+
+```{r}
+stri_extract_all_regex(z$text, '(g)')
+```
+
+
+
+
+### Ignore Case
+
+
+```{r}
+stri_extract_all_regex(z$text, '(?i)(g)')
+```
+
+
+# Exercises
+
+## String Data
+
+
+```{r}
+wiki <- c("In theoretical computer science and formal language theory, a regular expression (sometimes called a rational expression)[1][2] is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. \"find and replace\"-like operations.",
+    "The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep, a filter.",
+    "In modern usage, \"regular expressions\" are often distinguished from the derived, but fundamentally distinct concepts of regex or regexp, which no longer describe a regular language.",
+    "See below for details."
+)
+wiki
+```
+
+
+
+## Use `'wiki'` to make a 1 column dataframe with the column named wiki.
+
+
+```{r}
+x <- data.frame(wiki = wiki, stringsAsFactors=FALSE)
+x
+```
+
+
+
+
+## Which elements contain the expression "regular"?
+
+
+```{r}
+stri_detect_regex(x$wiki, 'regular')
+```
+
+
+## Which elements contain the expression "regular expression"?
+
+
+```{r}
+stri_detect_regex(x$wiki, 'regular expression')
+```
+
+
+
+## Get a count of the number of times the expression "regular" appears in each element.
+
+
+```{r}
+stri_count_regex(x$wiki, 'regular')
+```
+
+
+
+
+## Get a count of the number of times the expression "regular expression" appears in each element.
+
+
+```{r}
+stri_count_regex(x$wiki, 'regular expression')
+```
+
+
+
+## Get a count of the number of times the exact (match case) expression "the" appears in each element.
+
+
+```{r}
+stri_count_regex(x$wiki, 'the')
+```
+
+
+## Get a count of the number of times the expression "the" appears in each element ignoring case.
+
+
+```{r}
+stri_count_regex(x$wiki, '(?i)the')
+```
+
+
+
+## Replace the expression "regular expression" with `"<<REGEX>>"`.
+
+
+```{r}
+stri_replace_all_regex(x$wiki, 'regular expression', '<<REGEX>>')
+```
+
+
+
+
+## Replace the exact expression "the" with `"<<ARTICLE>>`.
+
+
+```{r}
+stri_replace_all_regex(x$wiki, 'the', '<<ARTICLE>>')
+```
+
+
+
+
+
+
+## Replace the expression "the" with `"<<ARTICLE>>` ignoring case.
+
+
+```{r}
+stri_replace_all_regex(x$wiki, '(?i)the', '<<ARTICLE>>')
+```
+
+
+
+
+## Extract all the occurrences of the exact expression "the" from each element.
+
+
+```{r}
+stri_extract_all_regex(x$wiki, 'the')
+```
+
+
+
+## Extract all the occurrences of the expression "the" from each element ignoring case.
+
+
+```{r}
+stri_extract_all_regex(x$wiki, '(?i)the')
+```
+
+
+## Split the text on the expression "the".
+
+
+```{r}
+stri_split_regex(x$wiki, 'the')
+```
+
+
+
+## Split the text on the expression "the" and form a wide array.
+
+```{r}
+t(stri_list2matrix(stri_split_regex(x$wiki, 'the')))
+```
+
+
+
+# Challenge
+
+***Hint***: you'll need to use/read [the documentation](http://www.gagolewski.com/software/stringi/manual)
+
+
+
+
+
+
+
+## Split on the first occurrence of the expression "the".
+
+
+```{r}
+stri_split_regex(x$wiki, 'the', n=2)
+```
+
+
+
+## Split on the last occurrence of the expression "the".
+
+```{r}
+stri_split_regex(stri_replace_last_regex(x$wiki, "the", "BREAKMEHERE"), "BREAKMEHERE")
+```
+	
+	
+## Switch all lower case letter 'a' to 'e' and vice versa.
+
+```{r}
+a <- stri_replace_all_regex(x$wiki, "a", "REPLACEMELATER")
+b <- stri_replace_all_regex(a, "e", "a")
+stri_replace_all_regex(b, "REPLACEMELATER", "e")
+```
+	

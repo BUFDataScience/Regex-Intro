@@ -1,0 +1,290 @@
+---
+title: "Regex"
+output: beamer_presentation
+---
+
+# My Regex Background
+
+- 5 Years ago (replace human text coding)  
+	- I mispronounce regex (!rejex)
+	- Text analysis (extract patterns from transcripts)     
+- 2 R regex based packages 
+
+# What you will learn/get today?
+
+1. Basic regex syntax
+2. Resources for learning regex
+3. Examples and growth exercises
+
+# Agenda (~40 minutes)
+
+1. Intro Regex (5 minutes)        
+2. Action Tools: DS Prog. Functions (5 mins)    
+3. Excercise \#1: Action Tools (8 mins)
+4. Regex Basics (10 mins)
+5. Exercise \#2: Basic Regex (remainder time)
+
+
+# Regex Intro
+5 minutes
+
+# Additional Resources
+
+
+- http://www.regular-expressions.info/tutorial.html    
+- http://www.rexegg.com    
+- https://www.debuggex.com
+
+<!-- \vspace{2cm}\centering \includegraphics[scale=0.3]{regviz.png}-->
+
+# What's it good for?
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+  \item Munging
+  \item Quantifying text data
+  \item Categorizing
+  \item Validating 
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+     \includegraphics[width=1.0\textwidth]{chuck.jpg}
+     \end{center}
+\end{column}
+\end{columns}
+
+
+# What is regex?
+
+> patterns of characters that match, or fail to match, sequences of characters in text. (Watt, 2005, p. 2)
+
+# What is it for? 
+
+## 4 Actions
+
+1. Matching (logical/counting)
+2. Subbing
+3. Splitting
+4. Extracting
+
+# Action Tools
+## Data Science Programing Language Functions
+
+R & Python
+5 Minutes
+
+# Important Distinction
+
+## Slashes for special characters:    
+R - \\\\    
+Python - \\
+
+
+# Language Functions for 4 Actions
+
+| Action | R: stringi  | Python: pandas |
+|---------|-----|---------|
+| Matching | `stri_detect_regex` | `.str.contains`     |
+| Counting | `stri_count_regex`  | `.str.count`    |
+| Subbing | `stri_replace_all_regex`  | `.str.replace`         |
+| Splitting | `stri_split_regex` | `.str.split`      |
+| Extracting | `stri_extract_all_regex` | `.str.extractall`   |
+
+\vspace{3cm}
+\tiny \emph{\textbf{Note}: There is a known bug in Pandas \texttt{.str.extractall} version 18.1}
+
+# Regular Characters
+
+Most characters, including all letters and digits, are regular expressions that match themselves
+
+# Exercise \#1: Action Tools 
+
+8 minutes
+
+```{r, echo=FALSE, comment = NA}
+stopsign <- c("         ______________", "       /.--------------.\\", "      //                \\\\", 
+    "     //                  \\\\", "    || .-..----. .-. .--. ||", 
+    "    ||( ( '-..-'|.-.||.-.|||", "    || \\ \\  ||  || ||||_||||", 
+    "    ||._) ) ||  \\'-'/||-' ||", "     \\\\'-'  `'   `-' `'  //", 
+    "      \\\\                //", "       \\\\______________//", 
+    "        '--------------'", "              |_|_", "       ____ _/ _)_)", 
+    "           '  | (_)", "        .--'\"\\| ()", "      mx      | |", 
+    "              | |", "              |_|")
+
+
+        
+#cat(paste(stopsign, collapse="\n"))       
+```
+
+# Regex Basics 
+
+10 minutes
+
+# Meta-Characters
+
+| Metacharacter | Meaning           |
+|--------------|-------------------|
+| ^ | Beginning of string           |
+| $ | End of string                 |
+| . | Any character                 |
+| `*` | Match 0 or more times         |
+| + | Match 1 or more times         |
+| ? | Match 0 or 1 times            |
+| `|` | Or                            |
+| ( ) | Group                       |
+| [ ] | Set of characters           |
+| { } | Repetition modifier          |
+| \ | Escape quote or metacharacter |
+
+
+## Escape 'em
+
+Escape these (usually with a `\`)
+
+# Mental Excercise
+
+Write a regular expression to match $1.00
+
+
+# Mental Excercise
+
+Write a regular expression to match $1.00
+
+\vspace{1in}
+
+**\\$1\\.00**
+
+# Character Classes
+
+- []
+- special
+	- 0-9
+	- A-Z
+	- a-z
+- meta-characters (you have no power here; only `]`, `\`, `^`, `-`)
+- no ordering; e.g., [xy] == [yx]
+
+\centering
+\vspace{2cm}
+`[A-Za-z' ]`
+
+	
+# Character Class: Negation
+
+`[^expressions_here]` - Everything except...
+
+\centering
+\vspace{5cm}
+`[^0-9.-]`
+
+# Short Hand Character Class
+
+\footnotesize
+
+| Regex          | Name           | Action   |
+|----------------|----------------|----------|
+| `\d`            | Digit          | Match     digits                                    |
+| `\D`            | Non-Digit      | Match     non-digits                             |
+| `\w`            | Word           | Match     words                   |
+| `\W`            | Non-Word       | Match     non-words                |
+| `\s`            | Whitespace     | Match     whitespace             |
+| `\S`            | Non-Whitespace | Match     non-whitespace                 |  
+
+\**Most Useful: `\d` & `\s`*
+
+\centering
+\vspace{2cm}
+`\w` = [A-Za-z0-9_]
+
+# Quantifiers
+
+\footnotesize
+
++---------+---------------+------------------------------+
+|  Regex  |     Name      |         What it Does         |
++=========+===============+==============================+
+|   `x?`    | 0-1 (Greedy)  |    Match 0-1 times greedy    |
++---------+---------------+------------------------------+
+|  `x??`   |  0-1 (Lazy)   |     Match 0-1 times lazy     |
++---------+---------------+------------------------------+
+|   `x*`    | >= 0 (Greedy) | Match 0 or more times greedy |
++---------+---------------+------------------------------+
+|   `x*?`   |  >= 0 (Lazy)  |  Match 0 or more times lazy  |
++---------+---------------+------------------------------+
+|   `x+`    | >= 1 (Greedy) | Match 1 or more times greedy |
++---------+---------------+------------------------------+
+|   `x+?`   |  >= 1 (Lazy)  |  Match 1 or more times lazy  |
++---------+---------------+------------------------------+
+|  `x{4}`   |   Exactly N   |        Match N times         |
++---------+---------------+------------------------------+
+| `x{4,8}`  |    Min-Max    |     Match min-max times      |
++---------+---------------+------------------------------+
+|  `x{9,}`  |      > N      |    Match N or more times     |
++---------+---------------+------------------------------+
+
+Use with single chars or [] or ()
+
+# Quantifiers: Greedy vs. Lazy
+
+```{r}
+gsub('\\(.*\\)', "<<OUT>>", "Look at (A) and then (B).")
+gsub('\\(.*?\\)', "<<OUT>>", "Look at (A) and then (B).")
+```
+
+# Quantifiers: Greedy vs. Lazy
+
+```{r}
+gsub('\\([^)]*\\)', "<<OUT>>", "Look at (A) and then (B).")
+```
+
+
+# Boolean Or
+
+`|` - pipe   
+
+\centering
+\vspace{2cm}
+
+`a|e`
+
+# Grouping
+
+`()` - Group
+
+- Order matters (unlike character classes `[]`)
+- Useful with quantifiers    
+
+\centering
+\vspace{2cm}
+
+`gr(a|e)y`    
+`(cat|dog|fish)`    
+`(?i)(hey jude ){2,}`
+ 
+
+
+
+# Anchors & Boundaries
+
+- ^ - begining     
+- $ - end     
+- `\b` - word boundary 
+
+\vspace{.5cm}
+\*[raw string (r'\\b') for Python](http://stackoverflow.com/a/3995242/1000343)
+
+
+\centering
+\vspace{2cm}
+
+`^\w+`     
+`\w+[.?!]+$`    
+`\bread`    
+`\bread\b`     
+
+
+
+
+
