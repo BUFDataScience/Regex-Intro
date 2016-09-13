@@ -12,7 +12,7 @@ The regex talk will be interactive.  These preparation instructions will ensure 
 2. Have Python or R installed    
 3. Have Jupyter notebooks or RStudio up and running    
 4. Have required add-on modules/packages installed    
-5. Have familiarity with either pandas and its `DataFrame` or base R' and its `data.frame`    
+5. Have familiarity with either pandas and its `DataFrame` or base R and its `data.frame`    
 
 
 
