@@ -37,4 +37,27 @@ Choose R or Python to use in the talk & ...
 2. Be able to [run Jupyter notebooks](https://www.youtube.com/watch?v=k_fJJ7Ak33c)     
  
 
-	 
+## Contents
+
+- [Slides](slides/regex_talk.pdf)
+- Exercises    
+      - R      
+        - Exercise 1: Regex Actions     
+            - Exercise: [01_regex_actions.Rmd](exercises/R/01_regex_actions.Rmd)     
+            - Answer Key: [01_regex_actions_answers.Rmd](exercises/R/01_regex_actions_answers.Rmd)     
+        - Exercise 2: Regex Basics      
+            - Exercise: [02_regex_basics.Rmd](exercises/R/02_regex_basics.Rmd)     
+            - Answer Key: [02_regex_basics_answers.Rmd](exercises/R/02_regex_basics_answers.Rmd)        
+      - Python     
+        - Exercise 1: Regex Actions        
+            - Exercise: [01_regex_actions.ipynb](exercises/Python/01_regex_actions.ipynb)     
+            - Answer Key: [01_regex_actions_answers.ipynb](exercises/Python/01_regex_actions_answers.ipynb)    
+        - Exercise 2: Regex Basics     
+            - Exercise: [02_regex_basics.ipynb](exercises/Python/02_regex_basics.ipynb)     
+            - Answer Key: [02_regex_basics_answers.ipynb](exercises/Python/02_regex_basics_answers.ipynb)     
+        
+        
+        
+        
+        
+        
