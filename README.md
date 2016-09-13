@@ -8,16 +8,17 @@ The regex talk will be interactive.  These preparation instructions will ensure 
 
  This talk will assume you will:
  
-1. Have Python or R installed    
-2. Have Jupyter notebooks or RStudio up and running    
-3. Have required add-on modules/packages installed    
-4. Have familiarity with either pandas' and its's `DataFrame` or base R' and its's `data.frame`    
+1. Forked or cloned this repo and pulled down locally ([git is an excellent way to do this](http://stackoverflow.com/questions/1872113/how-do-i-clone-a-github-project-to-run-locally))   
+2. Have Python or R installed    
+3. Have Jupyter notebooks or RStudio up and running    
+4. Have required add-on modules/packages installed    
+5. Have familiarity with either pandas' and its's `DataFrame` or base R' and its's `data.frame`    
 
 
 
 ## Preparation
 
-Choose R or Python to use in the talk...    
+Choose R or Python to use in the talk & ...    
 
 **R:**    
 
