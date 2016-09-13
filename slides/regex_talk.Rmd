@@ -1,5 +1,5 @@
 ---
-title: "Regex"
+title: "Introduction to Regex"
 output: beamer_presentation
 ---
 
@@ -16,11 +16,18 @@ output: beamer_presentation
 2. Resources for learning regex
 3. Examples and growth exercises
 
+\hspace{2cm}
+
+## And Expect to...    
+
+1.  Interact with code & others    
+2.  Be challenged and even struggle    
+
 # Agenda (~40 minutes)
 
 1. Intro Regex (5 minutes)        
 2. Action Tools: DS Prog. Functions (5 mins)    
-3. Excercise \#1: Action Tools (8 mins)
+3. Exercise \#1: Action Tools (8 mins)
 4. Regex Basics (10 mins)
 5. Exercise \#2: Basic Regex (remainder time)
 
@@ -69,8 +76,66 @@ output: beamer_presentation
 3. Splitting
 4. Extracting
 
+# What is it for? 
+
+## 4 Actions
+
+1. Matching (logical/counting)      
+  - `'o' in 'bat' == FALSE`     
+  - `'o' in 'bot' == TRUE` 
+2. Subbing
+3. Splitting
+4. Extracting
+
+
+# What is it for? 
+
+## 4 Actions
+
+1. Matching (logical/counting)      
+  - `'o' in 'bat' == 0` 
+  - `'o' in 'bot' == 1`   
+  - `'o' in 'boot' == 2`    
+2. Subbing
+3. Splitting
+4. Extracting
+
+
+# What is it for? 
+
+## 4 Actions
+
+1. Matching (logical/counting)      
+2. Subbing
+  - `'o' in 'bot' as 'a' == 'bat'`     
+  - `'t' in 'boot' as '' == 'boo'`   
+3. Splitting
+4. Extracting
+
+
+# What is it for? 
+
+## 4 Actions
+
+1. Matching (logical/counting)      
+2. Subbing
+3. Splitting
+  - `on 'o' in 'bot'  == {'b', 't'}`     
+4. Extracting
+
+# What is it for? 
+
+## 4 Actions
+
+1. Matching (logical/counting)      
+2. Subbing
+3. Splitting
+4. Extracting
+  - `'cat' in 'cat is not catsup' == {'cat', 'cat'}`     
+  - `'dog' in 'cat is not catsup' == {}`  
+
 # Action Tools
-## Data Science Programing Language Functions
+## Data Science Programming Language Functions
 
 R & Python
 5 Minutes
@@ -143,12 +208,12 @@ stopsign <- c("         ______________", "       /.--------------.\\", "      //
 
 Escape these (usually with a `\`)
 
-# Mental Excercise
+# Mental Exercise
 
 Write a regular expression to match $1.00
 
 
-# Mental Excercise
+# Mental Exercise
 
 Write a regular expression to match $1.00
 
@@ -168,7 +233,11 @@ Write a regular expression to match $1.00
 
 \centering
 \vspace{2cm}
-`[A-Za-z' ]`
+`[0-9.]`
+
+1. one
+2. two
+3. buckle shoe
 
 	
 # Character Class: Negation
@@ -176,8 +245,23 @@ Write a regular expression to match $1.00
 `[^expressions_here]` - Everything except...
 
 \centering
-\vspace{5cm}
-`[^0-9.-]`
+\vspace{4cm}
+`[^0-9.- ]`
+
+\vspace{2cm}
+`"I am 5.7 years old, -.3 from being six"` 
+
+# Character Class: Negation
+
+`[^expressions_here]` - Everything except...
+
+\centering
+\vspace{4cm}
+`[^0-9.- ]`
+
+\vspace{2cm}
+`"I am 5.7 years old, -.3 from being six"`    
+`"  5.7   -.3   "`
 
 # Short Hand Character Class
 
@@ -260,7 +344,7 @@ gsub('\\([^)]*\\)', "<<OUT>>", "Look at (A) and then (B).")
 \vspace{2cm}
 
 `gr(a|e)y`    
-`(cat|dog|fish)`    
+`(cat|gold|shell)fish`    
 `(?i)(hey jude ){2,}`
  
 
@@ -285,6 +369,8 @@ gsub('\\([^)]*\\)', "<<OUT>>", "Look at (A) and then (B).")
 `\bread\b`     
 
 
+# Exercise \#2: Regex Basics
 
+Until end of time...
 
 
