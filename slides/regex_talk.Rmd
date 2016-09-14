@@ -246,7 +246,7 @@ Write a regular expression to match $1.00
 
 \centering
 \vspace{4cm}
-`[^0-9.- ]`
+`[^0-9. -]`
 
 \vspace{2cm}
 `"I am 5.7 years old, -.3 from being six"` 
@@ -257,7 +257,7 @@ Write a regular expression to match $1.00
 
 \centering
 \vspace{4cm}
-`[^0-9.- ]`
+`[^0-9. -]`
 
 \vspace{2cm}
 `"I am 5.7 years old, -.3 from being six"`    
