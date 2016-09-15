@@ -354,10 +354,10 @@ gsub('\\([^)]*\\)', "<<OUT>>", "Look at (A) and then (B).")
 
 - ^ - begining     
 - $ - end     
-- `\b` - word boundary 
+- `\b` - word boundary\* 
 
 \vspace{.5cm}
-\*[raw string (r'\\b') for Python](http://stackoverflow.com/a/3995242/1000343)
+\*[*raw string (r'\\b') for Python*](http://stackoverflow.com/a/3995242/1000343)
 
 
 \centering
